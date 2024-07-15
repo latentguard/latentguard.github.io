@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Latent Guard: a Safety Framework for Text-to-image Generation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Latent Guard: a Safety Framework for Text-to-image Generation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Runtao Liu<sup>1</sup>,</span>
+            <span class="author-block">Ashkan Khakzar<sup>2</sup>,</span>
+            <span class="author-block">Jindong Gu<sup>2</sup>,</span>
+            <span class="author-block">Qifeng Chen<sup>1</sup>,</span>
+            <span class="author-block">Philip Torr<sup>2</sup>,</span>
+            <span class="author-block">Fabio Pizzati<sup>2</sup></span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Hong Kong University of Science and Technology,</span>
+            <span class="author-block"><sup>2</sup>University of Oxford</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2404.08031" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/rt219/LatentGuard" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{liu2024latent,
+  title={Latent Guard: a Safety Framework for Text-to-image Generation},
+  author={Liu, Runtao and Khakzar, Ashkan and Gu, Jindong and Chen, Qifeng and Torr, Philip and Pizzati, Fabio},
+  journal={arXiv preprint arXiv:2404.08031},
+  year={2024}
+}</code></pre>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Motivation & Background</h2>
+        <div class="content has-text-justified">
+          <p align="center">
+            <img width="774" alt="image" src="https://github.com/rt219/LatentGuard/assets/45531420/77c982d7-c8b4-4961-91b8-4264e7fc33b1">
+          </p>
+          <p>
+            Recent text-to-image generators are composed of a text encoder and a diffusion model. Their deployment without appropriate safety measures creates risks of misuse (left). We propose <em>Latent Guard</em> (right), a safety method designed to block malicious input prompts. Our idea is to detect the presence of blacklisted concepts on a learned latent space on top of the text encoder. This allows to detect blacklisted concepts beyond their exact wording, extending to some adversarial attacks too ("<strong>&lt;ADV&gt;</strong>"). The blacklist is adaptable at test time, for adding or removing concepts without retraining. Blocked prompts are not processed by the diffusion model, saving computational costs.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract -->
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            With the ability to generate high-quality images, text-to-image (T2I) models can be exploited for creating inappropriate content. To prevent misuse, existing safety measures are either based on text blacklists, which can be easily circumvented, or harmful content classification, requiring large datasets for training and offering low flexibility. Hence, we propose <i>Latent Guard</i>, a framework designed to improve safety measures in text-to-image generation. Inspired by blacklist-based approaches, <i>Latent Guard</i> learns a latent space on top of the T2I model's text encoder, where it is possible to check the presence of harmful concepts in the input text embeddings. Our proposed framework is composed of a data generation pipeline specific to the task using large language models, ad-hoc architectural components, and a contrastive learning strategy to benefit from the generated data. The effectiveness of our method is verified on three datasets and against four baselines.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Approach</h2>
+        <div class="content has-text-justified">
+          <p align="center">
+            <img width="782" alt="image" src="https://github.com/rt219/LatentGuard/assets/45531420/4650feb8-63d6-4d35-9a21-88365406a9d1">
+          </p>
+          <p>
+            <strong>Overview of <em>Latent Guard</em>.</strong> We first generate a dataset of safe and unsafe prompts centered around blacklisted concepts (left). Then, we leverage pretrained textual encoders to extract features, and map them to a learned latent space with our Embedding Mapping Layer (center). Only the Embedding Mapping Layer is trained, while all other parameters are kept frozen. We train by imposing a contrastive loss on the extracted embedding, bringing closer the embeddings of unsafe prompts and concepts, while separating them from safe ones (right).
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Dataset <em>CoPro</em> Generation</h2>
+        <div class="content has-text-justified">
+          <p align="center">
+            <img width="1099" alt="image" src="https://github.com/rt219/LatentGuard/assets/45531420/f27cad9d-e078-4763-8f7d-85724753d6c0">
+          </p>
+          <p>
+            <strong><em>CoPro</em> generation.</strong> For \(\mathcal{C}\) concepts, we sample unsafe \(\mathcal{U}\) prompts with an LLM as described in Section 3.1. Then, we create Synonym prompts by replacing \(c\) with a synonym, also using an LLM, and obtaining \(\mathcal{U}^\text{syn}\). Furthermore, we use an adversarial attack method to replace \(c\) with an "<em>&lt;ADV&gt;</em>" Adversarial text (\(\mathcal{U}^\text{adv}\)). Safe prompts \(\mathcal{S}\) are obtained from \(\mathcal{U}\). This is done for each ID and OOD data.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative and Quantitative Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            <strong>Evaluation on <em>CoPro</em>.</strong> We provide accuracy (a) and AUC (b) for <em>Latent Guard</em> and baselines on <em>CoPro</em>. We either rank first or second in all setups, training <strong>only</strong> on Explicit ID training data. We show examples of prompts of <em>CoPro</em> and generated images in (c). The unsafe image generated advocate the quality of our dataset. <em>Latent Guard</em> is the only method blocking all the tested prompts.
+          </p>
+          <p align="center">
+            <img width="1063" alt="image" src="https://github.com/rt219/LatentGuard/assets/45531420/d5b95664-b160-4da6-8352-48e83f8d9931">
+          </p>
+          <p>
+            <strong>Evaluation on Unseen Datasets.</strong> We test <em>Latent Guard</em> on existing datasets for both Unsafe Diffusion and I2P++. Although the input T2I prompts distribution is different from the one in <em>CoPro</em>, we still outperform all baselines and achieve a robust classification.
+          </p>
+          <p align="center">
+            <img width="911" alt="image" src="https://github.com/rt219/LatentGuard/assets/45531420/16ec46a3-db33-4d06-955b-ce4026c9d4aa">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Speed and Feature Space Analysis</h2>
+        <div class="content has-text-justified">
+          <p>
+            <strong>Computational cost.</strong> We measure processing times and memory usage for different batch sizes and concepts in \(\mathcal{C}_\text{check}\). In all cases, requirements are limited.
+          </p>
+          <p align="center">
+            <img width="454" alt="image" src="https://github.com/rt219/LatentGuard/assets/45531420/8c38a33b-41b1-475f-a36c-c43138865025">
+          </p>
+          <p>
+            <strong>Feature space analysis.</strong> Training <em>Latent Guard</em> on <em>CoPro</em> makes safe/unsafe regions naturally emerge (right). In the CLIP latent space, safe/unsafe embeddings are mixed (left).
+          </p>
+          <p align="center">
+            <img width="547" alt="image" src="https://github.com/rt219/LatentGuard/assets/45531420/20f1a0ac-cae6-48ae-82dc-06dabeff33f1">
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

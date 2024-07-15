@@ -1,1 +1,2 @@
-# latentguard
+# latentguard_page_private
+latentguard_page_private
